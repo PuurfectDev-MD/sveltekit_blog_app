@@ -42,40 +42,40 @@
 
 </script>
 
-<div class="box-1">
-<h1>Signup</h1>
+<div class="box-1 flex justify-center p-4">
+<h1 class="p-4 text-3xl font-bold">Signup</h1>
 
-<form onsubmit={signup}>
-    <div class="row">
+<form onsubmit={signup} class= "absolute top-1/4">
+    <div class="row p-4">
         <label>
         Username:
-            <input class="text-black" required type="text" id="username" />
+            <input class="text-black ml-4" required type="text" id="username" />
         </label>
     </div>
-        <div class="row">
+        <div class="row p-4">
         <label>
         Email:
-            <input class="text-black"  required type="email" id="email" />
+            <input class="text-black ml-4"  required type="email" id="email" />
         </label>
     </div>
         
-        <div class="row">
+        <div class="row p-4">
         <label>
         Password:
-            <input class="text-black"  required type="password" id="password" />
+            <input class="text-black ml-4"  required type="password" id="password" />
         </label>
     </div>
-        <div class="row">
+        <div class="row p-4">
         <label>
         Confirm Passowrd:
-            <input class="text-black"  required type="password" id="password_confirm" />
+            <input class="text-black ml-4"  required type="password" id="password_confirm" />
         </label>
     </div>
 
     {#if error}
     <p class="text-red-500">{error}</p>
     {/if}
-    <button type="submit"> Signup</button>
+    <button type="submit" class="p-4 bg-green-200 rounded-xl text-black"> Signup</button>
 </form>
 
 </div>

@@ -11,7 +11,7 @@ let { children, data } = $props();
 </svelte:head>
 
 
-<main class="bg-slate-800 text-white">
+<main>
 {@render children()}
 </main>
 
