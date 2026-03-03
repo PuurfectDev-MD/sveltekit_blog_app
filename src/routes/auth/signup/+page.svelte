@@ -31,7 +31,8 @@
         email,password, name:username,
     }, {
         onSuccess: async () =>{
-            goto('/');
+            console.log("Signup done")
+             window.location.href = '/'
         },
         onError: (ctx) =>{
             errorMessage  = ctx.error.message;
@@ -42,10 +43,9 @@
 
 </script>
 
-<div class="box-1 flex justify-center p-4">
+<div class="flex flex-row justify-center gap-y-4">
+<form onsubmit={signup} class= "pt-10">
 <h1 class="p-4 text-3xl font-bold">Signup</h1>
-
-<form onsubmit={signup} class= "absolute top-1/4">
     <div class="row p-4">
         <label>
         Username:
@@ -78,4 +78,9 @@
     <button type="submit" class="p-4 bg-green-200 rounded-xl text-black"> Signup</button>
 </form>
 
+</div>
+
+<div class="flex justify-center gap-x-6 p-5 ">
+<h1>Already Have an account?</h1>
+<a href= "/auth/login">Login</a>
 </div>
