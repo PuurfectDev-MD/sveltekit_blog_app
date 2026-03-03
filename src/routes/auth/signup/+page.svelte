@@ -8,7 +8,7 @@
 
    async function  signup(e:Event){
     e.preventDefault();
-
+    
     const form = e.target as HTMLFormElement;
     const username = form.username.value;
     const email = form.email.value;

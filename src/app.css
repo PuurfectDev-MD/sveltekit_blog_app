@@ -11,3 +11,11 @@ body {
 input {
     color: black;
 }
+
+p {
+    font-size: xx-small;
+}
+
+h1 {
+    font-size: large;
+}
