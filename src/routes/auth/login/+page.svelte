@@ -1,8 +1,10 @@
 <script lang="ts">
+
+
     let error = $state('');
     let errorMessage = $state('');
-    import { goto } from '$app/navigation';
   import {authClient} from '$lib/auth-client';
+	import { goto, invalidateAll } from '$app/navigation';
 
    async function  login(e:Event){
     e.preventDefault();
@@ -23,9 +25,10 @@
     await authClient.signIn.email({
         email,password
     }, {
-        onSuccess: async () =>{
+        onSuccess: async (ctx) =>{
             console.log("Login Done")
-             window.location.href = '/'
+            await invalidateAll()
+            await goto(`/${ctx.data.user.id}`);
         },
         onError: (ctx) =>{
             errorMessage  = ctx.error.message;
