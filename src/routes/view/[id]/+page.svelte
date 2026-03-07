@@ -1,7 +1,8 @@
 <script lang="ts">
-    import {post_by_id} from "$lib/info.remote";
+
+    import {get_post_by_id} from "../../admin/posts.remote";
       import {page} from "$app/state";
-    const post = await post_by_id(page.params.id!)
+    const post = await get_post_by_id(page.params.id!)
 </script>
 
 
