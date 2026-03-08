@@ -1,3 +1,7 @@
+<script lang="ts">
 
+</script>
 
-<h1>This is the main page!! </h1>
+<div class="mainText flex justify-center w-full items-center h-screen">
+    <h1 class="text-red-100 text-5xl">THIS IS THE MAIN WEBSITE PAGE</h1>
+</div>

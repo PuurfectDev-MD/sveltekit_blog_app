@@ -2,8 +2,8 @@
 import "../app.css";
 import favicon from '$lib/assets/favicon.svg';
 	import { authClient } from "$lib/auth-client";
-	import { goto } from "$app/navigation";
-
+	import { goto, invalidateAll } from "$app/navigation";
+	
 let { children, data } = $props();
 
 function logout(){
@@ -11,7 +11,8 @@ function logout(){
 		fetchOptions:{
 			onSuccess: async() => {
 				console.log("Logout done!")
-				 window.location.href = '/auth/login' // updates the server side also  -didnt used goto cause thats client side only
+				await invalidateAll()
+				await goto('/auth/login', { replaceState: true })
 
 			}
 		}
@@ -26,9 +27,20 @@ function logout(){
 
 <nav class="flex flex-row justify-center p-4 gap-x-4">
 	<a href= "/" class= "hover:scale-105">Home</a>
+	{#if data.user?.role == "admin"}
 	<a href="/admin" class= "hover:scale-105">Admin</a>
-	<a>IDK</a>
-	<a>Create</a>
+	{/if}
+	<a  class= "hover:scale-105">Explore</a>
+	<a  class= "hover:scale-105">Create</a>
+	
+
+	{#if data.user}
+	 <button onclick={logout}>Logout</button>
+
+	 {:else}
+	 <button onclick={() => goto('/auth/signup')}>signup</button>
+	{/if}
+
 </nav>
 
 {#if data.user}
