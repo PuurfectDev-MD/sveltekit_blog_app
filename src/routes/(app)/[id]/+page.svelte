@@ -12,7 +12,7 @@
         {#each (posts ?? []) as post}
             <a href="/view/{post.id}">
                 <div class="bg-slate-700 mt-10 p-10 rounded-xl">
-                    <h1>{post.title}</h1>
+                    <h1 class="text-3xl">{post.title}</h1>
                     <h2>{post.body}</h2>
                     <p class="pt-2">{post.createdAt}</p>
                 </div>

@@ -60,3 +60,8 @@ export const update_post = form(v.object({
     }).where(eq(post.id, id));
     redirect(303, "/admin");
 });
+
+
+export const delete_post = query(v.string(), async (post_id: string) => {
+    await db.delete(post).where(eq(post.id, post_id));
+})
