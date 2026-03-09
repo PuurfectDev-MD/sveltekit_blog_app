@@ -30,8 +30,7 @@ function logout(){
 	{#if data.user?.role == "admin"}
 	<a href="/admin" class= "hover:scale-105">Admin</a>
 	{/if}
-	<a  class= "hover:scale-105">Explore</a>
-	<a  class= "hover:scale-105">Create</a>
+	<a  href="/post/new" class= "hover:scale-105">Create</a>
 	
 
 	{#if data.user}
