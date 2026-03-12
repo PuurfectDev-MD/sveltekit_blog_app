@@ -19,3 +19,20 @@ p {
 h1 {
     font-size: large;
 }
+
+
+@font-face {
+    font-family: 'EagleLake';
+    src: url('/fonts/Eagle_Lake/EagleLake-Regular.ttf');
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'LilyScriptOne';
+    src: url('/fonts/Lily_Script_One/LilyScriptOne-Regular.ttf');
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+}

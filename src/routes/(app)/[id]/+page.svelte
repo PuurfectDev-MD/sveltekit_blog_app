@@ -4,6 +4,7 @@
 	import { redirect } from "@sveltejs/kit";
 	import { delete_post } from "../../admin/posts.remote";
     import { user_posts_by_id } from "./user_posts.remote"
+	import { stopPropagation } from "svelte/legacy";
 
     let postsPromise =$state(user_posts_by_id(page.params.id!)) ;
 
@@ -23,22 +24,21 @@
         <p>Loading posts...</p>
     {:then posts}
         {#each (posts ?? []) as post}
-            
-                <div class="bg-slate-700 mt-10 rounded-xl m-4 max-h-60 max-w-80 overflow-hidden p-10">
+            <a href="/view/{post.id}">
+                <div class="bg-slate-700 mt-10 rounded-xl m-4 max-h-60 max-w-80 overflow-hidden p-10 z-0">
                 <div class="flex flex-row justify-between">
-                      <h1 class="text-3xl">{post.title}</h1>
+                      <h1 class="text-3xl z-10">{post.title}</h1>
                       {#if post_to_delete != null }
                         <p>Deleting</p>
                         {:else}
-                         <button onclick={() => delete_user_post(post.id)} class="px-4 bg-red-600 rounded-xl w-fit">Delete</button>
+                         <button onclick={(e) =>{e.preventDefault(); e.stopPropagation(); delete_user_post(post.id)}} class="px-4 bg-red-600 rounded-xl w-fit z-50">Delete</button>
                       {/if}
                      
-                </div><a href="/view/{post.id}">
-                  
-                    <h2>{post.body}</h2>
-                    <p class="pt-2">{post.createdAt}</p>
-                        </a>
                 </div>
+                    <h2 class="z-10 py-4">{post.body}</h2>
+                    <p class="pt-2 bottom-0">{post.createdAt}</p>
+                        
+                </div></a>
        
         {:else}
             <p>No posts found.</p>

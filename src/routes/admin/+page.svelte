@@ -15,9 +15,7 @@
     }
 </script>
 
-<a href="admin/post/new" class="p-8"> New post </a>
-
-<div class="flex flex-wrap justify-evenly gap-8">
+<div class="flex flex-wrap justify-evenly gap-8 mt-10">
 {#each posts as post (post.id) }
 <div class="p-8 rounded-lg bg-slate-800 w-[20%] p-8">
 

@@ -4,7 +4,12 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
 	theme: {
-		extend: {}
+		extend: {
+			fontFamily: {
+				eagle: ['EagleLake', 'serif'],
+				lily_script: ['LilyScriptOne', 'serif'],
+			}
+		}
 	},
 
 	plugins: []

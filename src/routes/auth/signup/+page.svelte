@@ -8,6 +8,8 @@
 
    async function  signup(e:Event){
     e.preventDefault();
+    error = ''
+    errorMessage = ''
     
     const form = e.target as HTMLFormElement;
     const username = form.username.value;
@@ -31,8 +33,8 @@
         email,password, name:username,
     }, {
         onSuccess: async () =>{
-            console.log("Signup done")
-             window.location.href = '/'
+            console.log("Going to verify page")
+             window.location.href = '/auth/verify'
         },
         onError: (ctx) =>{
             errorMessage  = ctx.error.message;
@@ -71,16 +73,23 @@
             <input class="text-black ml-4"  required type="password" id="password_confirm" />
         </label>
     </div>
+    <button type="submit" class="p-4 bg-green-200 rounded-xl text-black mt-8"> Signup</button>
+    
 
-    {#if error}
-    <p class="text-red-500">{error}</p>
-    {/if}
-    <button type="submit" class="p-4 bg-green-200 rounded-xl text-black"> Signup</button>
 </form>
 
 </div>
 
-<div class="flex justify-center gap-x-6 p-5 ">
+<div class="flex justify-center gap-x-6 p-5 mt-10">
 <h1>Already Have an account?</h1>
 <a href= "/auth/login">Login</a>
+</div>
+
+<div class="flex flex-col justify-center items-center">
+  {#if errorMessage || error}
+            <h1 class="text-red-500 text-3xl">{errorMessage}</h1>
+            <h1 class="text-red-500 text-3xl">{error}</h1>
+            {:else}
+            <p></p>
+        {/if}
 </div>
