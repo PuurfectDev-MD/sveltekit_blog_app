@@ -3,6 +3,7 @@
 
     let error = $state('');
     let errorMessage = $state('');
+    let logging = $state(false)
   import {authClient} from '$lib/auth-client';
 	import { goto, invalidateAll } from '$app/navigation';
 
@@ -33,6 +34,7 @@
         onError: (ctx) =>{
             errorMessage  = ctx.error.message;
             console.error(errorMessage);
+            logging = false;
             
         }
     });
@@ -65,11 +67,17 @@
     {#if error}
     <p class="text-red-500">{error}</p>
     {/if}
-    <button type="submit" class="p-4 mt-8 bg-green-200 rounded-xl text-black"> Login</button>
+    <button type="submit" onclick={() => {
+        logging = true
+    }} class="p-4 mt-8 bg-green-200 rounded-xl text-black">{logging ? 'Logging in...' : 'Login'}</button>
 </form>
 
 </div>
-
+ {#if logging }
+    <div class="fixed bg-green-500 text-white w-[40%] h-[10vh] rounded-lg shadow-lg bottom-[80%] right-[-2rem] transition-all animate-pulse">
+        <p class="md:text-2xl px-8 py-4 text-xl">Putting everything together :)</p>
+        </div>
+    {/if}
 
 <div class="flex gap-x-6 p-5 mt-4 justify-center">
 <h1>Dont have an account?</h1>

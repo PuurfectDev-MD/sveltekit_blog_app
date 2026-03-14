@@ -6,6 +6,8 @@
   let error  = $state('');
   let errorMessage = $state('');
 
+  let signing = $state(false);
+
    async function  signup(e:Event){
     e.preventDefault();
     error = ''
@@ -39,6 +41,7 @@
         onError: (ctx) =>{
             errorMessage  = ctx.error.message;
             console.error(errorMessage);
+            signing = false;
         }
     });
   }
@@ -77,10 +80,18 @@
             <input class="text-black ml-4"  required type="password" id="password_confirm" />
         </label>
     </div>
-    <button type="submit" class="p-4 bg-green-200 rounded-xl text-black mt-8"> Signup</button>
-    
+         <button type="submit" onclick={() => {
+        signing= true
+    }} class="p-4 bg-green-200 rounded-xl text-black mt-8"> {signing ? 'Signing up...' : 'Signup'}</button>
+  
 
 </form>
+
+ {#if signing }
+    <div class="fixed bg-green-500 text-white w-[40%] h-[10vh] rounded-lg shadow-lg bottom-[80%] right-[-2rem] transition-all animate-pulse">
+        <p class="md:text-2xl px-8 py-4 text-xl">Preparing your space :)</p>
+        </div>
+    {/if}
 
 </div>
 
