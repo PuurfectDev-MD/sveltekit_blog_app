@@ -5,9 +5,15 @@ import { admin } from 'better-auth/plugins';
 import { env } from '$env/dynamic/private';
 import { getRequestEvent } from '$app/server';
 import { db } from '$lib/server/db';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-const resend = new Resend(env.RESEND_API_KEY);
+const transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: env.GMAIL_USER,
+		pass: env.GMAIL_APP_PASSWORD
+	}
+})
 
 export const auth = betterAuth({
 	baseURL: env.ORIGIN,
@@ -19,14 +25,12 @@ export const auth = betterAuth({
 	},
 	emailVerification: {
 		sendVerificationEmail: async ({ user, url }) => {
-			const { data, error } = await resend.emails.send({
-				from: 'onboarding@resend.dev',
+			await transporter.sendMail({
+				from: env.GMAIL_USER,
 				to: user.email,
 				subject: 'Verify your email',
 				html: `Click here to verify your account: <a href="${url}">${url}</a>`
 			})
-			console.log("Resend-result", data)
-			console.log("Error", error)
 		},
 		autoSignInAfterVerification: true,
 	},
