@@ -29,7 +29,7 @@
                 <div class="flex flex-row justify-between">
                       <h1 class="text-3xl z-10">{post.title}</h1>
                       {#if post_to_delete != null }
-                        <p>Deleting</p>
+                        <p>Delete</p> 
                         {:else}
                          <button onclick={(e) =>{e.preventDefault(); e.stopPropagation(); delete_user_post(post.id)}} class="px-4 bg-red-600 rounded-xl w-fit z-50">Delete</button>
                       {/if}
@@ -39,6 +39,12 @@
                     <p class="pt-2 bottom-0">{post.createdAt}</p>
                         
                 </div></a>
+
+                {#if post_to_delete }
+                <div class="fixed bg-green-500 text-white w-[40%] h-[10vh] rounded-lg shadow-lg bottom-[80%] right-[-2rem] transition-all animate-pulse">
+                    <p class="md:text-2xl px-8 py-4 text-xl">Deleting.... Give me a moment :)</p>
+                    </div>
+                {/if}
        
         {:else}
             <p>No posts found.</p>

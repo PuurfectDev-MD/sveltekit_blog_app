@@ -34,7 +34,7 @@ export const create_post = form(v.object({
         body,
         authorId: session.user.id
     });
-    redirect(303, "/admin");
+    redirect(303, "/");
 });
 
 
@@ -60,7 +60,7 @@ export const update_post = form(v.object({
         slug,
         body
     }).where(eq(post.id, id));
-    redirect(303, "/admin");
+    redirect(303, "/");
 });
 
 

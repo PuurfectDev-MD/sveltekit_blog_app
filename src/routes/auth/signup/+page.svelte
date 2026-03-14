@@ -47,7 +47,11 @@
 
 <div class="flex flex-row justify-center gap-y-4">
 <form onsubmit={signup} class= "pt-10">
-<h1 class="p-4 text-3xl font-bold">Signup</h1>
+<div class="flex gap-x-5 p-4">
+    <h1 class="text-3xl font-bold">Signup >> </h1>
+    <h2 class="text-2xl pt-1">To begin noting snippets!</h2>
+</div>
+
     <div class="row p-4">
         <label>
         Username:
