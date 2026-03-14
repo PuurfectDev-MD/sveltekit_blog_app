@@ -31,7 +31,7 @@
                       {#if post_to_delete != null }
                         <p>Delete</p> 
                         {:else}
-                         <button onclick={(e) =>{e.preventDefault(); e.stopPropagation(); delete_user_post(post.id)}} class="px-4 bg-red-600 rounded-xl w-fit z-50">Delete</button>
+                         <button onclick={(e) =>{e.preventDefault(); e.stopPropagation(); delete_user_post(post.id)}} class="px-4 bg-red-600 rounded-xl w-fit z-50 shrink-0 h-[7vh]">Delete</button>
                       {/if}
                      
                 </div>

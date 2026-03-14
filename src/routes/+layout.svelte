@@ -5,6 +5,7 @@ import favicon from '$lib/assets/favicon.svg';
 	import { goto, invalidateAll } from "$app/navigation";
 	
 let { children, data } = $props();
+let logging_out = $state(false);
 
 function logout(){
 	authClient.signOut({
@@ -22,7 +23,7 @@ function logout(){
 </script>
 
 <svelte:head>
-	<link rel="icon" href="{favicon}" />
+	<link rel="icon" href="/images/icon.png" />
 </svelte:head>
 
 <nav class="flex flex-row justify-center p-4 gap-x-20 text-2xl font-serif">
@@ -34,7 +35,7 @@ function logout(){
 	
 
 	{#if data.user}
-	 <button onclick={logout} class="bg-red-600 p-2 rounded-md hover:scale-105">Logout</button>
+	 <button onclick={logout} class="bg-red-600 p-2 rounded-md hover:scale-105">{logging_out ? 'Logging Off' : "Log Out"}</button>
 
 	 {:else}
 	 <button onclick={() => goto('/auth/signup')} class="bg-red-600 p-2 rounded-md hover:scale-105">Signup</button>
@@ -46,9 +47,15 @@ function logout(){
 <div class="flex flex-col items-end p-4 pr-8 bg-slate-600">
 <h1 class="pt-2">This is {data.user.name}'s account</h1>
 <h2 class="pt-2">{data.user.email}</h2>
-<button onclick={logout}>Logout</button>
+<button onclick={logout}>{logging_out ? 'Logging Off' : "Log Out"}</button>
 </div>
 {/if}
+
+ {#if logging_out }
+    <div class="fixed bg-green-500 text-white w-[40%] md:h-[10vh] h-[15vh] rounded-lg shadow-lg bottom-[80%] right-[-2rem] transition-all animate-pulse">
+        <p class="md:text-2xl px-8 py-4 text-xl">Some back soon :)</p>
+        </div>
+    {/if}
 
 <main>
 {@render children()}

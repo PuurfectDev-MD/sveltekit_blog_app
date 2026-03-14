@@ -28,7 +28,7 @@
     </div>
 </form>
  {#if posting }
-    <div class="fixed bg-green-500 text-white w-[40%] h-[10vh] rounded-lg shadow-lg bottom-[50%] right-[-2rem] transition-all animate-pulse">
+    <div class="fixed bg-green-500 text-white w-[40%] md:h-[10vh] h-[15vh] rounded-lg shadow-lg bottom-[50%] right-[-2rem] transition-all animate-pulse">
         <p class="md:text-2xl px-8 py-4 text-xl">Posting.... Give me a moment :)</p>
         </div>
     {/if}
