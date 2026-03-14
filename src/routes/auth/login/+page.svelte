@@ -74,7 +74,7 @@
 
 </div>
  {#if logging }
-    <div class="fixed bg-green-500 text-white w-[40%] md:h-[10vh] h-[15vh] rounded-lg shadow-lg bottom-[80%] right-[-2rem] transition-all animate-pulse">
+       <div class="fixed bg-green-500 text-white md:w-[40%] md:h-[10vh] w-[90%] rounded-lg shadow-lg md:bottom-[80%] md:right-[-2rem] bottom-[8vh] right-[-1rem] transition-all animate-pulse">
         <p class="md:text-2xl px-8 py-4 text-xl">Putting everything together :)</p>
         </div>
     {/if}

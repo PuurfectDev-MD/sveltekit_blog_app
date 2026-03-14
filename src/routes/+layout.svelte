@@ -28,8 +28,8 @@ function logout(){
 	<link rel="icon" href="/images/icon.png" />
 </svelte:head>
 
-<nav class="flex flex-row justify-center p-4 gap-x-20 text-2xl font-serif">
-	<a href= "/" class= "hover:scale-105 bg-green-500 p-2 rounded-md ">Home</a>
+<nav class="flex flex-row justify-center p-4 md:gap-x-20 gap-x-10 md:text-2xl text-xl font-serif">
+	<a href= "/" onclick={() => invalidateAll()} class= "hover:scale-105 bg-green-500 p-2 rounded-md ">Home</a>
 	{#if data.user?.role == "admin"}
 	<a href="/admin" class= "hover:scale-105 bg-red-600 p-2 rounded-md">Admin</a>
 	{/if}
@@ -54,8 +54,8 @@ function logout(){
 {/if}
 
  {#if logging_out }
-    <div class="fixed bg-green-500 text-white w-[40%] md:h-[10vh] h-[15vh] rounded-lg shadow-lg bottom-[80%] right-[-2rem] transition-all animate-pulse">
-        <p class="md:text-2xl px-8 py-4 text-xl">Some back soon :)</p>
+     <div class="fixed bg-green-500 text-white md:w-[40%] md:h-[10vh] w-[90%] rounded-lg shadow-lg md:bottom-[80%] md:right-[-2rem] bottom-[8vh] right-[-1rem] transition-all animate-pulse">
+        <p class="md:text-2xl px-8 py-4 text-xl">Come back Soon :)</p>
         </div>
     {/if}
 

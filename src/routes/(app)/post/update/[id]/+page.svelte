@@ -3,6 +3,8 @@
     import {page} from "$app/state";
 
     const post = await get_post_by_id(page.params.id!);
+
+    let updating = $state(false)
  </script>
 
 
@@ -24,7 +26,16 @@
         <label> <textarea {...update_post.fields.body.as('text')} value="{post?.body}" class="text-black p-4 w-full h-60" ></textarea></label>
     </div>
 
-    <button type= "submit">Done </button>
+    <button type= "submit" onclick={()=> {
+        updating= true;
+    }}> {updating ? 'Updating..' : "Update"} </button>
     </div>
 </form>
+
+ {#if updating }
+       <div class="fixed bg-green-500 text-white md:w-[40%] md:h-[10vh] w-[90%] rounded-lg shadow-lg md:bottom-[80%] md:right-[-2rem] bottom-[8vh] right-[-1rem] transition-all animate-pulse">
+        <p class="md:text-2xl px-8 py-4 text-xl">Mistakes huh? :)</p>
+        </div>
+    {/if}
+
 </div>

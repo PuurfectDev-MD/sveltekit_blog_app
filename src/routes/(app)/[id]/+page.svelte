@@ -41,9 +41,9 @@
                 </div></a>
 
                 {#if post_to_delete }
-                <div class="fixed bg-green-500 text-white w-[40%] h-[10vh] rounded-lg shadow-lg bottom-[80%] right-[-2rem] transition-all animate-pulse">
-                    <p class="md:text-2xl px-8 py-4 text-xl">Deleting.... Give me a moment :)</p>
-                    </div>
+                <div class="fixed bg-green-500 text-white md:w-[40%] md:h-[10vh] w-[90%] rounded-lg shadow-lg md:bottom-[50%] md:right-[-2rem] bottom-[8vh] right-[-1rem] transition-all animate-pulse z-40">
+                <p class="md:text-2xl px-8 py-4 text-xl">Deleting.... Give me a moment :)</p>
+               </div>
                 {/if}
        
         {:else}
