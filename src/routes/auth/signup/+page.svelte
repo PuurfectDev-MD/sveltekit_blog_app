@@ -9,7 +9,8 @@
   let signing = $state(false);
 
    async function  signup(e:Event){
-    e.preventDefault();
+    signing =true
+    e.preventDefault()
     error = ''
     errorMessage = ''
     
@@ -21,11 +22,13 @@
 
     if (password !== password_confirm){
         error = "Password dont match"
+             signing = false;
         return;
     }
 
     if (!username || !email || !password || !password_confirm){
         error = 'All fields are required';
+             signing = false;
         return;
     }
 
@@ -80,9 +83,7 @@
             <input class="text-black ml-4"  required type="password" id="password_confirm" />
         </label>
     </div>
-         <button type="submit" onclick={() => {
-        signing= true
-    }} class="p-4 bg-green-200 rounded-xl text-black mt-8"> {signing ? 'Signing up...' : 'Signup'}</button>
+         <button type="submit" class="p-4 bg-green-200 rounded-xl text-black mt-8"> {signing ? 'Signing up...' : 'Signup'}</button>
   
 
 </form>

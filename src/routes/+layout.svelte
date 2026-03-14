@@ -8,11 +8,13 @@ let { children, data } = $props();
 let logging_out = $state(false);
 
 function logout(){
+	logging_out=true
 	authClient.signOut({
 		fetchOptions:{
 			onSuccess: async() => {
 				console.log("Logout done!")
 				await invalidateAll()
+				logging_out=false
 				await goto('/auth/login', { replaceState: true })
 
 			}
